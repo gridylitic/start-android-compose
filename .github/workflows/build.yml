@@ -1,0 +1,28 @@
+# Maintenance instrumentation for this repository - a student never needs
+# this and never touches it. Every push and every Monday: set up the JDK and
+# the Android SDK and run the real debug build, so dependency rot is caught
+# here instead of by a reader mid-track. This produces the same debug APK
+# your "ready when" asks for. Deliberately has NO deploy anywhere: the
+# starting point is local-only by ruling.
+name: build
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 3 * * 1"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: android-actions/setup-android@v3
+      - name: Build the debug APK
+        run: ./gradlew assembleDebug --no-daemon
+      - name: Confirm the APK was produced
+        run: test -f app/build/outputs/apk/debug/app-debug.apk
