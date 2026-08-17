@@ -1,0 +1,12 @@
+.gradle/
+build/
+local.properties
+*.apk
+*.ap_
+*.dex
+captures/
+
+# IDE
+.idea/
+*.iml
+.vscode/

@@ -1,0 +1,9 @@
+# Keep line endings deterministic across machines. gradlew is a POSIX shell
+# script and MUST stay LF or it breaks on Linux and CI; the .bat stays CRLF;
+# the wrapper jar is binary.
+* text=auto eol=lf
+*.bat text eol=crlf
+gradlew text eol=lf
+*.jar binary
+*.png binary
+*.apk binary
