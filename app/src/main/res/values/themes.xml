@@ -1,0 +1,5 @@
+<resources>
+    <!-- Compose draws the whole UI with Material 3; this platform theme just
+         gives the Activity a sensible no-action-bar window to host it. -->
+    <style name="Theme.Starter" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>
